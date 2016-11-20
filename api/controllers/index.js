@@ -139,6 +139,27 @@ module.exports = function (router) {
         res.json(rank);
     }).all(badVerb);
 
+    router.route('/query-graph').get((req, res, next) => {
+        const q = req.query;
+
+        let errs = [];
+
+        if (errs.length) {
+            return res.status(400).json({
+                message: 'VALIDATION_FAILED',
+                errors:  errs
+            });
+        }
+
+        var result = {
+            data:    model.getQueryData(q.dc, q.pf, q.ft)
+        };
+
+        var rank = model.graphData(result, q.limit, q.dc);
+
+        res.json(rank);
+    }).all(badVerb);
+
     router.route('/impressions').get((req, res, next) => {
         const q = req.query;
 

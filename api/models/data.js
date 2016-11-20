@@ -134,4 +134,51 @@ module.exports = {
 
         return ranked;
     },
+
+    graphData: function graphData(result, limit, dc) {
+        var ranked = result;
+
+        ranked['data'].sort(function (a, b) {
+            return  b['timestamp'] - a['timestamp'];
+        });
+
+        if (limit) {
+            ranked['data'] = ranked['data'].slice(0, limit);
+        }
+        for (var i = 0; i < ranked['data'].length; i++) {
+            ranked['data'][i]['cpm'] = (ranked['data'][i]['spend']/(ranked['data'][i]['impressions']*1000))
+            ranked['data'][i]['loc'] = dc;
+        }
+
+        var result = {};
+
+        for (var i = 0; i < ranked['data'].length; i++ ) {
+            if (result[ranked['data'][i]['loc']+ranked['data'][i]['platform']+ranked['data'][i]['format']] == undefined ) {
+                result[ranked['data'][i]['loc']+ranked['data'][i]['platform']+ranked['data'][i]['format']] = {
+                    'timestamps': [],
+                    'cpms': [],
+                    'platform': ranked['data'][i]['platform'],
+                    'format': ranked['data'][i]['format'],
+                    'impressions': ranked['data'][i]['impressions'],
+                    'spend': ranked['data'][i]['spend']
+
+                } 
+
+
+                // {"data":[{"timestamp":1479653400000,"platform":"app","format":"banner","impressions":7321,"spend":45460.61,"cdm":0.006209617538587625,"loc":"NA"},
+            } else {
+                result[ranked['data'][i]['loc']+ranked['data'][i]['platform']+ranked['data'][i]['format']]['timestamps'].push(
+                        ranked['data'][i]['timestamp']
+                    );
+                result[ranked['data'][i]['loc']+ranked['data'][i]['platform']+ranked['data'][i]['format']]['cpms'].push(
+                        ranked['data'][i]['cpm']
+                    );
+            }
+
+        }
+
+    
+
+        return result;
+    },
 };
