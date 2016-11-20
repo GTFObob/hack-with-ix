@@ -18,7 +18,7 @@ export default class CardsList extends Component {
         if (!elements.length == 0) {           
             for (var i=0, element; element = elements[i]; i++) {
                 cards.push(<li key={i} ><Cardd impressions={element["impressions"]} 
-                    spend={element["spend"]} cpm={element["cpm"]} 
+                    spend={element["spend"]} cpm={element["cpm"]} timestamps={element["timestamp"]}
                     loc={element["loc"]} i={"Rank " + (i+1).toString()} format={element["format"]} platform={element["platform"]}
                  /></li>);
             }
