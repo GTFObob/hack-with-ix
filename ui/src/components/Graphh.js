@@ -12,9 +12,9 @@ export default class Graphh extends Component {
 
     render() {
         var data = {
-            labels: {this.props.timestamps},
+            labels: this.props.timestamps,
             datasets: [{
-                data: {this.pros.cpms}
+                data: this.props.cpms
                 
             }
             ]
