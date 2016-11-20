@@ -15,12 +15,14 @@ export default class CardsList extends Component {
         var cards = [];
 
     
-        if (!elements.length == 0) {           
-            for (var i=0, element; element = elements[i]; i++) {
-                cards.push(<li key={i} >
+        for(var key1 in elements) {        
+            console.log(key1)
+            for (var element in elements[key1]) {
+                cards.push(<li >
                     <div className="collapsible-header"> 
-                        <Cardd impressions={element["impressions"]} spend={element["spend"]} cpm={element["cpm"]} 
-                        loc={element["loc"]} i={"Rank " + (i+1).toString()} format={element["format"]} platform={element["platform"]}/>
+                        <Cardd impressions={element["impressions"]} spend={element["spend"]} cpms={element["cpms"]} 
+                        loc={element["loc"]} format={element["format"]} platform={element["platform"]}
+                        timestamps={element["timestamps"]}/>
                     </div>
                     <div className="collapsible-body">
                         <p> HEY TEHRE BUDDY </p>

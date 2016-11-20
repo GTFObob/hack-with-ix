@@ -18,12 +18,14 @@ export default class Search extends Component {
     var format = $("#format").val();
     var location = $("#location").val();
 
-    fetch('http://localhost:8000/query-time?dc='+location+"&pf="+platform+"&ft="+format+"&limit=20")
+    fetch('http://localhost:8000/query-graph?dc='+location+"&pf="+platform+"&ft="+format+"&limit=20")
       .then(res => res.json())
       .then(json => {
         this.setState({ results: json.data})
+        console.log(this.state.results)
       })
       .catch(err => { console.log('ERROR', err); });
+      
   }
 
 

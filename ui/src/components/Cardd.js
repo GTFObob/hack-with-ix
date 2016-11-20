@@ -11,8 +11,8 @@ export default class Cardd extends React.Component {
     		return (
 
     			<Col m={6} s={12}>
-    				<Card className='blue-grey darken-1' textClassName='white-text' style={{textAlign:"center"}} title={this.props.i} actions={[<a href='#'>View more information</a>]}>
-    					Time:{this.props.timestamp} Impressions: {this.props.impressions}, Spends: {this.props.spend} Format: {this.props.format}, Platform: {this.props.platform}, CPM: {this.props.cpm}, Location : {this.props.loc}
+    				<Card className='blue-grey darken-1' textClassName='white-text' style={{textAlign:"center"}} title="hi" actions={[<a href='#'>View more information</a>]}>
+    					Time:{this.props.timestamps} Impressions: {this.props.impressions}, Spends: {this.props.spend} Format: {this.props.format}, Platform: {this.props.platform}, CPM: {this.props.cpms}, Location : {this.props.loc}
     				</Card>
 				</Col>
 

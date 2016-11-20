@@ -150,11 +150,11 @@ module.exports = {
             ranked['data'][i]['loc'] = dc;
         }
 
-        var result = {};
+        var result = {'data':{}};
 
         for (var i = 0; i < ranked['data'].length; i++ ) {
-            if (result[ranked['data'][i]['loc']+ranked['data'][i]['platform']+ranked['data'][i]['format']] == undefined ) {
-                result[ranked['data'][i]['loc']+ranked['data'][i]['platform']+ranked['data'][i]['format']] = {
+            if (result['data'][ranked['data'][i]['loc']+ranked['data'][i]['platform']+ranked['data'][i]['format']] == undefined ) {
+                result['data'][ranked['data'][i]['loc']+ranked['data'][i]['platform']+ranked['data'][i]['format']] = {
                     'timestamps': [],
                     'cpms': [],
                     'platform': ranked['data'][i]['platform'],
@@ -167,10 +167,10 @@ module.exports = {
 
                 // {"data":[{"timestamp":1479653400000,"platform":"app","format":"banner","impressions":7321,"spend":45460.61,"cdm":0.006209617538587625,"loc":"NA"},
             } else {
-                result[ranked['data'][i]['loc']+ranked['data'][i]['platform']+ranked['data'][i]['format']]['timestamps'].push(
+                result['data'][ranked['data'][i]['loc']+ranked['data'][i]['platform']+ranked['data'][i]['format']]['timestamps'].push(
                         ranked['data'][i]['timestamp']
                     );
-                result[ranked['data'][i]['loc']+ranked['data'][i]['platform']+ranked['data'][i]['format']]['cpms'].push(
+                result['data'][ranked['data'][i]['loc']+ranked['data'][i]['platform']+ranked['data'][i]['format']]['cpms'].push(
                         ranked['data'][i]['cpm']
                     );
             }
