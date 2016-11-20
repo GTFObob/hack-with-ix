@@ -30,7 +30,7 @@ export default class App extends Component {
          <Search/>
 
 
-        <CardsList/>
+        <CardsList id="mainList"/>
        </div>
     )
   }

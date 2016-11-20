@@ -30,6 +30,7 @@ export default class Search extends Component {
       .catch(err => { console.log('ERROR', err); });
 
     console.log(this.state.results);
+    
 
   }
 
