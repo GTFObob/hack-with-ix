@@ -17,16 +17,22 @@ export default class CardsList extends Component {
     
         if (!elements.length == 0) {           
             for (var i=0, element; element = elements[i]; i++) {
-                cards.push(<li key={i} ><Cardd impressions={element["impressions"]} 
-                    spend={element["spend"]} cpm={element["cpm"]} 
-                    loc={element["loc"]} i={"Rank " + (i+1).toString()} format={element["format"]} platform={element["platform"]}
-                 /></li>);
+                cards.push(<li key={i} >
+                    <div className="collapsible-header"> 
+                        <Cardd impressions={element["impressions"]} spend={element["spend"]} cpm={element["cpm"]} 
+                        loc={element["loc"]} i={"Rank " + (i+1).toString()} format={element["format"]} platform={element["platform"]}/>
+                    </div>
+                    <div className="collapsible-body">
+                        <p> HEY TEHRE BUDDY </p>
+                    </div>
+                    
+                </li>);
             }
 
         }
 
         return (
-            <ul>
+            <ul className="collapsible popout" dataCollapsible="accordion">
                 {cards}
             </ul>
         )
