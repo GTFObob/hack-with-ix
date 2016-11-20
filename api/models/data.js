@@ -44,6 +44,9 @@ module.exports = {
     getQueryData: function getQueryData(dc, pf, ft) {
         var now = Date.now() - LAG;
 
+        if (pf == 'all') { pf = null; }
+        if (ft == 'all') { ft = null; }
+
         if (dc && pf && ft) {
             return query[dc].filter((data) => {
                 return data.platform == pf
@@ -94,16 +97,40 @@ module.exports = {
     rankData: function rankData(result, limit, dc) {
         var ranked = result;
 
+        ranked['data'].sort(function (a, b) {
+            return  b['timestamp'] - a['timestamp'];
+        });
 
+        if (limit) {
+            ranked['data'] = ranked['data'].slice(0, limit);
+        }
+        for (var i = 0; i < ranked['data'].length; i++) {
+            ranked['data'][i]['cpm'] = (ranked['data'][i]['spend']/(ranked['data'][i]['impressions']*1000))
+            ranked['data'][i]['loc'] = dc;
+        }
+        
         ranked['data'].sort(function (a, b) {
             return (a['spend']/(a['impressions']*1000)) - (b['spend']/(b['impressions']*1000));
         });
 
-        ranked['data'] = ranked['data'].slice(0, limit);
+        return ranked;
+    },
+
+    rankTime: function rankTime(result, limit, dc) {
+        var ranked = result;
+
+        ranked['data'].sort(function (a, b) {
+            return  b['timestamp'] - a['timestamp'];
+        });
+
+        if (limit) {
+            ranked['data'] = ranked['data'].slice(0, limit);
+        }
         for (var i = 0; i < ranked['data'].length; i++) {
-            ranked['data'][i]['cdm'] = (ranked['data'][i]['spend']/(ranked['data'][i]['impressions']*1000))
+            ranked['data'][i]['cpm'] = (ranked['data'][i]['spend']/(ranked['data'][i]['impressions']*1000))
             ranked['data'][i]['loc'] = dc;
         }
+    
 
         return ranked;
     },
