@@ -29,9 +29,7 @@ export default class App extends Component {
          </Navbar>
          <div style={{width:'100%'}} >
           <Search />
-        </div>
-
-        <CardsList id="mainList"/>
+        </div>  
        </div>
     )
   }

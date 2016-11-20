@@ -91,7 +91,7 @@ module.exports = {
         return query;
     },
 
-    rankData: function rankData(result, limit) {
+    rankData: function rankData(result, limit, dc) {
         var ranked = result;
 
 
@@ -102,6 +102,7 @@ module.exports = {
         ranked['data'] = ranked['data'].slice(0, limit);
         for (var i = 0; i < ranked['data'].length; i++) {
             ranked['data'][i]['cdm'] = (ranked['data'][i]['spend']/(ranked['data'][i]['impressions']*1000))
+            ranked['data'][i]['loc'] = dc;
         }
 
         return ranked;
