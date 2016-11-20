@@ -2,12 +2,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import CardList from 'components/CardList'
+export default class Card extends React.Component {
 
-let cards = [
-    {'name': 'Super card', 'id': 1},
-    {'name': 'Other card', 'id': 2},
-    {'name': 'Last card', 'id': 3}
-];
-
-ReactDOM.render(<CardList cards={cards} />, document.getElementById("baseElement"))
+    render() {
+    		return (<li key={this.props.element.id}>{this.props.element.name}</li>)
+    	}
+ }

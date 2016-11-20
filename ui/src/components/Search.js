@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Form from 'lib/react/form';
-import Input from 'lib/react/input';
-import Textarea from 'lib/react/textarea';
 import { Button } from 'react-materialize';
 
-import Dropb, {DDFormat, DDLocation, DDPlatform} from 'components/Dropb'
+import {DDFormat, DDLocation, DDPlatform} from './Dropb'
 
 export default class Search extends Component {
   constructor () {
     super()
+    this.results = { results : [] }
   }
 
   render() {
     return (
-      <Form>
-        <legend> Enter the values, b </legend>
+      <Form id="searchForm">
+        <label> Enter the values, b </label>
         <DDFormat />
         <DDPlatform />
-		<DDLocation />
-
-        <Button waves='light'>Submit</Button>
+		    <DDLocation />
+        <Button type="submit" value="Submit" waves='light'>Search</Button>
       </Form>
     );
   }

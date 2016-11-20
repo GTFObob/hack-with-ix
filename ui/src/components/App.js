@@ -1,14 +1,16 @@
 // Dependencies
 
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom';
-import Dropdown from 'lib/react/dropdown';
-import DropdownItem from 'lib/react/dropdown-item';
+import ReactDOM from 'react-dom'
 
 
 // Components
-import { Navbar, NavItem } from 'react-materialize';
-import Search from 'components/Search';
+import { Navbar, NavItem } from 'react-materialize'
+
+import Logout from './Logout'
+import Card from './Card'
+import Search from "./Search"
+
 
 export default class App extends Component {
   constructor () {
@@ -17,15 +19,18 @@ export default class App extends Component {
 
   render () {
     return (
-      <div style={{width:'100%'}} >
-        <Navbar className="#1a237e indigo darken-4" left>
-         <NavItem style={{float:'left'}}> <DisplayProfileImage/>  </NavItem>
-         <NavItem style={{float:'left'}}> Kanye West </NavItem>
-         <NavItem style={{float:'right'}} href='./logout'> Logout </NavItem>
-        </Navbar>
+       <div style={{width:'100%'}} >
+         <Navbar className="#1a237e indigo darken-4" left>
+          <NavItem style={{float:'left'}}> <DisplayProfileImage/>  </NavItem>
+          <NavItem style={{float:'left'}}> Kanye West </NavItem>
+          <NavItem style={{float:'right'}} href='./logout'> Logout </NavItem>
+         </Navbar>
 
-        <Search/>
-      </div>
+         <Search/>
+
+
+        <Card element={{'name': 'Super card', 'id': 1}}/>
+       </div>
     )
   }
 }

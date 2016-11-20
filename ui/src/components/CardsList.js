@@ -1,13 +1,18 @@
-// src/cardList.jsx
 import React from 'react'
 
-class CardList extends React.Component {
+
+export default class CardsList extends React.Component {
+
+	let cards = [
+	    {'name': 'Super card', 'id': 1},
+	    {'name': 'Other card', 'id': 2},
+	    {'name': 'Last card', 'id': 3}
+	];
+
     render() {
-        let elements = this.props.cards.map((element) => {
+        let elements = {cards}.map((element) => {
             return (<li key={element.id}>{element.name}</li>)
-        })
+        }
         return <ul>{elements}</ul>
     }
 }
-
-export default CardList
