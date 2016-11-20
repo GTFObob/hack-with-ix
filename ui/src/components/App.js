@@ -25,7 +25,6 @@ export default class App extends Component {
           <NavItem style={{float:'left'}}> Kanye West </NavItem>
           <NavItem style={{float:'right'}} href='./logout'> Logout </NavItem>
          </Navbar>
-
          <Search/>
 
 

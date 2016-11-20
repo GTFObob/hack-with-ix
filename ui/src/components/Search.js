@@ -18,7 +18,7 @@ export default class Search extends Component {
         <DDFormat />
         <DDPlatform />
 		    <DDLocation />
-        <Button type="submit" value="Submit" waves='light'>Search</Button>
+        <Button id="searchButton" type="submit" value="Submit" waves='light'>Search</Button>
       </Form>
     );
   }
