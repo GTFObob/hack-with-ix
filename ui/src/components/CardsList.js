@@ -23,7 +23,7 @@ export default class CardsList extends Component {
                         loc={element["loc"]} i={"Rank " + (i+1).toString()} format={element["format"]} platform={element["platform"]}/>
                     </div>
                     <div className="collapsible-body">
-                        <p> HEY TEHRE BUDDY </p>
+                        
                     </div>
                     
                 </li>);
