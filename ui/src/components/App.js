@@ -8,8 +8,10 @@ import ReactDOM from 'react-dom'
 import { Navbar, NavItem } from 'react-materialize'
 
 import Logout from './Logout'
-import Card from './Card'
+//import Cardd from './Cardd'
 import Search from "./Search"
+//import { Card }  from 'react-materialize'
+import CardsList from "./CardsList"
 
 
 export default class App extends Component {
@@ -28,7 +30,7 @@ export default class App extends Component {
          <Search/>
 
 
-        <Card element={{'name': 'Super card', 'id': 1}}/>
+        <CardsList/>
        </div>
     )
   }

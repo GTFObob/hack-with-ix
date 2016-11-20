@@ -1,18 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 
+import Cardd from './Cardd'
 
-export default class CardsList extends React.Component {
-
-	let cards = [
-	    {'name': 'Super card', 'id': 1},
-	    {'name': 'Other card', 'id': 2},
-	    {'name': 'Last card', 'id': 3}
-	];
+export default class CardsList extends Component {
 
     render() {
-        let elements = {cards}.map((element) => {
-            return (<li key={element.id}>{element.name}</li>)
+        var elements = [{'name': 'Super card', 'id': 1}, {'name': 'Other card', 'id': 2}, {'name': 'Last card', 'id': 3}];
+        
+        var cards = [];
+        for (var i=0, element; element = elements[i]; i++) {
+            console.log(element.name);
+            cards.push(<li><Cardd value={element.name} /></li>);
         }
-        return <ul>{elements}</ul>
+
+        return ( 
+            <ul>
+                {cards}
+            </ul>
+        )
     }
 }
+

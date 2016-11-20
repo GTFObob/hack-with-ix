@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom'
 import { Input } from 'react-materialize'
 
 export class DDFormat extends Component {
+  constructor () {
+    super()
+  }
 
   render() {
     return (

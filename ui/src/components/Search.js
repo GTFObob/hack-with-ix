@@ -8,18 +8,43 @@ import {DDFormat, DDLocation, DDPlatform} from './Dropb'
 export default class Search extends Component {
   constructor () {
     super()
-    this.results = { results : [] }
+    this.state = { results : [] }
+  }
+
+  getData() {
+
+    console.log("HELLO");
+
+    var platform = $("#platform").val();
+    var format = $("#format").val();
+    var location = $("#location").val();
+
+    console.log('http://100.64.197.73:8000/query-rank?dc='+location+"&pf="+platform+"&ft="+format);
+
+    fetch('http://100.64.197.73:8000/query-rank?dc='+location+"&pf="+platform+"&ft="+format)
+      .then(res => res.json())
+      .then(json => {
+        console.log(json.data);
+        this.setState({ results: json.data})
+      })
+      .catch(err => { console.log('ERROR', err); });
+
+    console.log(this.state.results);
+
   }
 
   render() {
     return (
-      <Form id="searchForm">
+      <div id="searchForm" >
         <label> Enter the values, b </label>
         <DDFormat />
         <DDPlatform />
 		    <DDLocation />
-        <Button id="searchButton" type="submit" value="Submit" waves='light'>Search</Button>
-      </Form>
+        <Button onClick={this.getData.bind(this)} id="searchButton" type="submit" value="Submit" waves='light' >Search</Button>
+      </div>
     );
+
   }
+
+
 }
