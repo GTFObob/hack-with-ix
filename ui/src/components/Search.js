@@ -19,9 +19,9 @@ export default class Search extends Component {
     var format = $("#format").val();
     var location = $("#location").val();
 
-    console.log('http://100.64.197.73:8000/query-rank?dc='+location+"&pf="+platform+"&ft="+format);
+    console.log('http://localhost:8000/query-rank?dc='+location+"&pf="+platform+"&ft="+format);
 
-    fetch('http://100.64.197.73:8000/query-rank?dc='+location+"&pf="+platform+"&ft="+format)
+    fetch('http://localhost:8000/query-rank?dc='+location+"&pf="+platform+"&ft="+format)
       .then(res => res.json())
       .then(json => {
         console.log(json.data);
